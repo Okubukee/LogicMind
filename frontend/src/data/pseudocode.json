@@ -1,0 +1,32 @@
+﻿{
+  "binary_insertion": {
+    "title": "Binary Insertion Sort",
+    "code": "BINARY INSERTION SORT:\n\nfor i = 1 to n-1\n    key = arr[i]\n    left = 0\n    right = i - 1\n    while left <= right\n        mid = (left + right) // 2\n        if arr[mid] > key\n            right = mid - 1\n        else\n            left = mid + 1\n    for j = i-1 down to left\n        arr[j+1] = arr[j]\n    arr[left] = key\n\nComplejidad: O(n²) tiempo | O(1) espacio",
+    "description": "Binary insertion sort uses binary search to find the insertion position."
+  },
+  "bitonic": {
+    "title": "Bitonic Sort",
+    "code": "BITONIC SORT:\n\nfunction bitonicMerge(low, cnt, dir):\n    if cnt > 1\n        k = cnt // 2\n        for i = low to low+k-1\n            if (dir == 1 and arr[i] > arr[i+k]) or (dir == 0 and arr[i] < arr[i+k])\n                swap(arr[i], arr[i+k])\n        bitonicMerge(low, k, dir)\n        bitonicMerge(low+k, k, dir)\n\nfunction bitonicSort(low, cnt, dir):\n    if cnt > 1\n        k = cnt // 2\n        bitonicSort(low, k, 1)\n        bitonicSort(low+k, k, 0)\n        bitonicMerge(low, cnt, dir)\n\nComplejidad: O(n log² n) tiempo | O(1) espacio",
+    "description": "Bitonic sort is a parallel sorting algorithm that creates bitonic sequences."
+  },
+  "block": {
+    "title": "Block Sort",
+    "code": "BLOCK SORT:\n\nBLOCK_SIZE = 32\n\nfor i = 0 to n step BLOCK_SIZE\n    insertionSort(arr, i, min(i+BLOCK_SIZE-1, n-1))\n\nsize = BLOCK_SIZE\nwhile size < n\n    for left = 0 to n step 2*size\n        mid = left + size - 1\n        right = min(left + 2*size - 1, n-1)\n        if mid < right\n            merge(arr, left, mid, right)\n    size *= 2\n\nComplejidad: O(n log n) tiempo | O(1) espacio",
+    "description": "Block sort is a stable sorting algorithm that sorts blocks and merges them."
+  },
+  "bubble": {
+    "title": "Bubble Sort",
+    "code": "BUBBLE SORT:\n\nfor i = 0 to n-1\n  for j = 0 to n-i-2\n    if arr[j] > arr[j+1]\n      swap(arr[j], arr[j+1])\n\nComplejidad: O(n²) tiempo | O(1) espacio",
+    "description": "Bubble sort repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order."
+  },
+  "bucket": {
+    "title": "Bucket Sort",
+    "code": "BUCKET SORT:\n\nminVal = min(arr)\nmaxVal = max(arr)\nnumBuckets = sqrt(n)\nbucketRange = (maxVal - minVal) / numBuckets\nbuckets = [[] for _ in range(numBuckets)]\n\nfor value in arr\n    index = floor((value - minVal) / bucketRange)\n    buckets[index].append(value)\n\nfor bucket in buckets\n    sort(bucket)\n    result.extend(bucket)\n\nComplejidad: O(n + k) tiempo promedio | O(n²) peor caso",
+    "description": "Bucket sort distributes elements into buckets, sorts each bucket individually, then concatenates them."
+  },
+  "burst": {
+    "title": "Burst Sort",
+    "code": "BURST SORT:\n\nclass TrieNode:\n    children = {}\n    bucket = []\n    isLeaf = True\n\nfunction insert(node, value, depth):\n    if node.isLeaf\n        node.bucket.append(value)\n        if len(node.bucket) > LIMIT\n            node.isLeaf = False\n            for val in node.bucket\n                digit = getDigit(val, depth)\n                if digit not in node.children\n                    node.children[digit] = TrieNode()\n                insert(node.children[digit], val, depth+1)\n            node.bucket = None\n    else\n        digit = getDigit(value, depth)\n        if digit not in node.children\n            node.children[digit] = TrieNode()\n        insert(node.children[digit], value, depth+1)\n\nComplejidad: O(n log n) tiempo | O(n) espacio",
+    "description": "BurstSort is a trie-based sorting algorithm where nodes 'burst' when they become full."
+  }
+}

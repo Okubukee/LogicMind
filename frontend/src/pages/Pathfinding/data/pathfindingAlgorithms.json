@@ -1,0 +1,72 @@
+﻿{
+  "dijkstra": {
+    "id": "dijkstra",
+    "name": "Dijkstra",
+    "icon": "🔍",
+    "description": "Encuentra el camino más corto desde un nodo origen a todos los demás. Usa una cola de prioridad.",
+    "complexity": "O((V + E) log V)",
+    "space": "O(V)",
+    "bestCase": "O((V + E) log V)",
+    "worstCase": "O((V + E) log V)"
+  },
+  "astar": {
+    "id": "astar",
+    "name": "A*",
+    "icon": "⭐",
+    "description": "Utiliza una heurística para encontrar el camino más corto de manera más eficiente que Dijkstra.",
+    "complexity": "O(E log V)",
+    "space": "O(V)",
+    "bestCase": "O(E)",
+    "worstCase": "O(E log V)"
+  },
+  "bfs": {
+    "id": "bfs",
+    "name": "BFS",
+    "icon": "🌊",
+    "description": "Explora el grafo por niveles. Encuentra el camino más corto en grafos no ponderados.",
+    "complexity": "O(V + E)",
+    "space": "O(V)",
+    "bestCase": "O(V + E)",
+    "worstCase": "O(V + E)"
+  },
+  "dfs": {
+    "id": "dfs",
+    "name": "DFS",
+    "icon": "🌲",
+    "description": "Explora tan profundo como sea posible antes de retroceder. No garantiza el camino más corto.",
+    "complexity": "O(V + E)",
+    "space": "O(V)",
+    "bestCase": "O(V + E)",
+    "worstCase": "O(V + E)"
+  },
+  "bellman_ford": {
+    "id": "bellman_ford",
+    "name": "Bellman-Ford",
+    "icon": "🔔",
+    "description": "Permite aristas con peso negativo. Detecta ciclos negativos.",
+    "complexity": "O(V × E)",
+    "space": "O(V)",
+    "bestCase": "O(E)",
+    "worstCase": "O(V × E)"
+  },
+  "greedy_bfs": {
+    "id": "greedy_bfs",
+    "name": "Greedy BFS",
+    "icon": "🎯",
+    "description": "Versión voraz de BFS que siempre elige el nodo más prometedor según la heurística.",
+    "complexity": "O(V + E)",
+    "space": "O(V)",
+    "bestCase": "O(V + E)",
+    "worstCase": "O(V + E)"
+  },
+  "bidirectional_bfs": {
+    "id": "bidirectional_bfs",
+    "name": "Bidirectional BFS",
+    "icon": "🔄",
+    "description": "BFS que se ejecuta desde el origen y el destino simultáneamente.",
+    "complexity": "O(V + E)",
+    "space": "O(V)",
+    "bestCase": "O(V + E)",
+    "worstCase": "O(V + E)"
+  }
+}
