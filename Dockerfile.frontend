@@ -1,0 +1,31 @@
+# Etapa 1: Construir la aplicación React
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Copiar archivos de dependencias
+COPY frontend/package.json frontend/package-lock.json* ./
+
+# Instalar todas las dependencias (incluyendo las de desarrollo como Tailwind)
+RUN npm ci
+
+# Copiar el código fuente
+COPY frontend/ .
+
+# Construir la aplicación para producción
+RUN npm run build
+
+# Etapa 2: Servir con nginx
+FROM nginx:alpine
+
+# Copiar los archivos construidos a nginx
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Copiar configuración personalizada de nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Exponer el puerto 80
+EXPOSE 80
+
+# Iniciar nginx
+CMD ["nginx", "-g", "daemon off;"]
