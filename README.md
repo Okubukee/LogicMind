@@ -1,5 +1,3 @@
-# Crear README.md
-@"
 # 🧠 LogicMind - Visualización de Algoritmos
 
 <div align="center">
